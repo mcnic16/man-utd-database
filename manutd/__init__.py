@@ -11,4 +11,12 @@ app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DB_URL")
 
 db = SQLAlchemy(app)
 
+from .auth import auth
+from .routes import routes
+
+app.register_blueprint(routes, url_prefix='/')
+app.register_blueprint(auth, url_prefix='/')
+
+
+
 from manutd import routes  # noqa
